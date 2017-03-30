@@ -2,7 +2,7 @@
 name: parser
 packages:
 - logstash
-- logsearch-config
+#- logsearch-config
 - java8
 templates:
   bin/parser_ctl: bin/parser_ctl
