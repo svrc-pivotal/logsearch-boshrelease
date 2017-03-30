@@ -9,6 +9,7 @@ templates:
   data/properties.sh.erb: data/properties.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  config/kafka_tls.crt.erb: config/kafka_tls.crt
   config/syslog_tls.crt.erb: config/syslog_tls.crt
   config/syslog_tls.key.erb: config/syslog_tls.key
   config/logstash.conf.erb: config/logstash.conf
@@ -33,6 +34,13 @@ properties:
       A list of output plugins, with a hash of options for each of them. Please refer to example below.
     example:
       outputs:
+      - plugin: kafka
+        options:
+          security_protocol: "SSL"
+          bootstrap_servers: "broker1:9093,broker2:9093,broker3:9093"
+          topic_id: "cf_topic"
+          ssl_truststore_location: "/var/vcap/jobs/ingestor_syslog/config/kafka.jks"
+          ssl_truststore_password: "logstashkafka"
       - plugin: rabbitmq
         options:
           host: 192.168.1.1
@@ -51,7 +59,8 @@ properties:
     description: Syslog-TLS SSL certificate (file contents, not a path) - required if logstash_ingestor.syslog_tls.port set
   logstash_ingestor.syslog_tls.ssl_key:
     description: Syslog-TLS SSL key (file contents, not a path) - required if logstash_ingestor.syslog_tls.port set
-
+  logstash_ingestor.kafka_tls.ssl_cert:
+    description: Kafka TLS CA certificate (file contents, not a path) - required if using a kafka TLS output
   logstash_ingestor.relp.port:
     description: Port to listen for RELP messages
     default: 2514
