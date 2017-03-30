@@ -1,5 +1,0 @@
----
-name: kibana
-dependencies: []
-files:
-  - kibana/kibana-5.0.0-linux-x86_64.tar.gz
