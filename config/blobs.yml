@@ -55,3 +55,7 @@ redis/redis-3.2.8.tar.gz:
   object_id: 15e19594-4fec-44f5-9070-87e15a767f31
   sha: 6780d1abb66f33a97aad0edbe020403d0a15b67f
   size: 1547237
+logstash/logstash-output-kafka-5.1.5.zip:
+  object_id: c84aca66-83ca-45d0-b5f5-85b1d8a4e1c3
+  sha: a0ce81b142f2a5322c725a47606993532c594623
+  size: 2442921
