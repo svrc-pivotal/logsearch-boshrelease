@@ -4,4 +4,5 @@ blobstore:
   options:
     region: "ca-central-1"
     bucket_name: logstash-svrc
+    endpoint: "https://s3.ca-central-1.amazonaws.com"
 final_name: logstash
