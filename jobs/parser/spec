@@ -10,6 +10,7 @@ templates:
   data/properties.sh.erb: data/properties.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  config/kafka_tls.crt.erb: config/kafka_tls.crt
   config/input_and_output.conf.erb: config/input_and_output.conf
   config/filters_pre.conf.erb: config/filters_pre.conf
   config/filters_post.conf.erb: config/filters_post.conf
@@ -53,7 +54,14 @@ properties:
     description: |
       A list of output plugins, with a hash of options for each of them. Please refer to example below.
     example:
-      inputs:
+      outputs:
+        - plugin: kafka
+          options:
+            security_protocol: "SSL"
+            bootstrap_servers: "broker1:9093,broker2:9093,broker3:9093"
+            topic_id: "cf_topic"
+            ssl_truststore_location: "/var/vcap/jobs/ingestor_syslog/config/kafka.jks"
+            ssl_truststore_password: "logstashkafka"
         - plugin: mongodb
           options:
             uri: 192.168.1.1
@@ -63,6 +71,8 @@ properties:
   logstash_parser.workers:
     description: "The number of worker threads that logstash should use (default: auto = one per CPU)"
     default: auto
+  logstash_parser.kafka_tls.ssl_cert:
+    description: Kafka TLS CA certificate (file contents, not a path) - required if using a kafka TLS output
   logstash_parser.elasticsearch.idle_flush_time:
     description: "How frequently to flush events if the output queue is not full." 
   logstash_parser.elasticsearch.document_id:
