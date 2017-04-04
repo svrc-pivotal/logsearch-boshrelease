@@ -2,4 +2,6 @@
 builds:
   65e8705c-74f3-41aa-adb0-918dca4cd0b5:
     version: '2'
+  770f0050-e5b3-480e-a5e9-11275fe2a890:
+    version: '3'
 format-version: '2'

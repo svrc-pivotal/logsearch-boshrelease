@@ -1,0 +1,68 @@
+---
+packages:
+- name: haproxy
+  version: acb734c5a536923af60e0423cd985b87883377b0
+  fingerprint: acb734c5a536923af60e0423cd985b87883377b0
+  sha1: 85c0a4233e47ededbdcf8fec8b8c31c4ad27dcbd
+  dependencies: []
+- name: java8
+  version: ae41eecf1175fb16c678940d4d6e31af10405b6e
+  fingerprint: ae41eecf1175fb16c678940d4d6e31af10405b6e
+  sha1: 8e30c9fefff0648d1758eb4170c3247cc98b666e
+  dependencies: []
+- name: logsearch-config
+  version: d97417d30c6eea002ec797bb646081bbb3d2174f
+  fingerprint: d97417d30c6eea002ec797bb646081bbb3d2174f
+  sha1: 091fe1b8517a5776af5f4cc3fac9c8769f3d91f5
+  dependencies:
+  - ruby2.3
+- name: logstash
+  version: a5b42ae155a7c8cd69c419d093838d6a65e7fd80
+  fingerprint: a5b42ae155a7c8cd69c419d093838d6a65e7fd80
+  sha1: 01f4ca384e466b01dce455cc63fcad0307e464b5
+  dependencies:
+  - java8
+- name: nats_to_syslog
+  version: f3267716fa78721e65fc1b804684dd6c4bd3de9d
+  fingerprint: f3267716fa78721e65fc1b804684dd6c4bd3de9d
+  sha1: ac738c8b82bd8adc23b94000b66efdc8655a3ef4
+  dependencies: []
+- name: redis
+  version: 56da6d494c2533c5eb79393efe5b3c2a94d7202e
+  fingerprint: 56da6d494c2533c5eb79393efe5b3c2a94d7202e
+  sha1: fac1357d9d422348171b8f0dfe735e8bf1cc43ff
+  dependencies: []
+- name: ruby2.3
+  version: fb06f47a9242f5fef6c0449f73e88fe13f4b3073
+  fingerprint: fb06f47a9242f5fef6c0449f73e88fe13f4b3073
+  sha1: 477e722e49aab5572a2a907eee3c0372bffb64aa
+  dependencies: []
+jobs:
+- name: haproxy
+  version: a25ed4b252d01a9125f5de410064392d06527cf6
+  fingerprint: a25ed4b252d01a9125f5de410064392d06527cf6
+  sha1: e512179e1c3126be5e79bed6051ea9aab15a722c
+- name: ingestor_syslog
+  version: ca0aa4776d295713aba4b10d5e02af1258ec8d19
+  fingerprint: ca0aa4776d295713aba4b10d5e02af1258ec8d19
+  sha1: 67365f11484f7787604241562ced2ece7a9becaf
+- name: nats_to_syslog
+  version: 84ee4bd18c9361a125b4cdcf8802f6be76e1f696
+  fingerprint: 84ee4bd18c9361a125b4cdcf8802f6be76e1f696
+  sha1: ed55d64b5fba6faf84b464102fd73d5397b3903e
+- name: parser
+  version: 077b9b4d6f3497dc565c4d5cf8a9595e1c3712a0
+  fingerprint: 077b9b4d6f3497dc565c4d5cf8a9595e1c3712a0
+  sha1: 5db62db1e0b32afb201c8a33c0bffcb63057b027
+- name: queue
+  version: 0bc4c3f15e4af8f2cfdce7aa9e05d0ea1dd250a5
+  fingerprint: 0bc4c3f15e4af8f2cfdce7aa9e05d0ea1dd250a5
+  sha1: 3454262730474b71ba145bae882e4d39132080df
+license:
+  version: 7990cd67c49dc9a4fd1cda168bb5352eca5ca67b
+  fingerprint: 7990cd67c49dc9a4fd1cda168bb5352eca5ca67b
+  sha1: 57dbc40eb84cc80453754f11ae10e66520edb061
+commit_hash: 293d1bb1
+uncommitted_changes: true
+name: logstash
+version: '3'
