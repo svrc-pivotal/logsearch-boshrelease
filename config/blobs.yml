@@ -59,3 +59,7 @@ logstash/logstash-output-kafka-5.1.5.zip:
   object_id: c84aca66-83ca-45d0-b5f5-85b1d8a4e1c3
   sha: a0ce81b142f2a5322c725a47606993532c594623
   size: 2442921
+ttar/ttar:
+  object_id: 033214cb-aae9-4698-a852-874ce6048c96
+  sha: 60bfdea4d0d50d5316ba1a9aca217f1d3f0ad1f5
+  size: 567

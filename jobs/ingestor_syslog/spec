@@ -3,13 +3,14 @@ name: ingestor_syslog
 packages:
 - logstash
 - java8
+- ttar
 templates:
   bin/ingestor_syslog_ctl: bin/ingestor_syslog_ctl
   bin/monit_debugger: bin/monit_debugger
   data/properties.sh.erb: data/properties.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
-  config/kafka_tls.crt.erb: config/kafka_tls.crt
+  config/kafka_tls.ttar.erb: config/kafka_tls.ttar
   config/syslog_tls.crt.erb: config/syslog_tls.crt
   config/syslog_tls.key.erb: config/syslog_tls.key
   config/logstash.conf.erb: config/logstash.conf
@@ -37,16 +38,14 @@ properties:
     default: false
   logstash_ingestor.outputs:
     description: |
-      A list of output plugins, with a hash of options for each of them. Please refer to example below.
+      A list of output plugins, with a hash of options for each of them. Please refer to example below.  Note that Kafka pluin SSL options
+      are automatically configured if `logstash_ingestor.kafka_tls.ssl_cert` is set, and should not be specified.
     example:
       outputs:
       - plugin: kafka
         options:
-          security_protocol: "SSL"
           bootstrap_servers: "broker1:9093,broker2:9093,broker3:9093"
           topic_id: "cf_topic"
-          ssl_truststore_location: "/var/vcap/jobs/ingestor_syslog/config/kafka.jks"
-          ssl_truststore_password: "logstashkafka"
       - plugin: rabbitmq
         options:
           host: 192.168.1.1

@@ -92,6 +92,17 @@ output {
             output['options'] = options.merge(output['options'])
           end
         %>
+       <%
+         if 'kafka' == output['plugin']
+           if_p('logstash_ingestor.kafka_tls.ssl_cert') do |ssl|
+             options = Hash.new
+             options['security_protocol'] = 'SSL'
+             options['ssl_truststore_location'] = '/var/vcap/jobs/ingestor_syslog/config/kafka.jks'
+             options['ssl_truststore_password'] = 'logstashkafka'
+             output['options'] = options.merge(output['options'])
+           end
+         end
+        %>
         <% output['options'].each do | k, v | %>
           <%= k %> => <%= v.inspect %>
         <% end %>

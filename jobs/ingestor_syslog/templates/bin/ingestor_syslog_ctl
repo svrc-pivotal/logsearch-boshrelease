@@ -6,10 +6,14 @@ set -u # report the usage of uninitialized variables
 # Setup env vars and folders for the webapp_ctl script
 source /var/vcap/jobs/ingestor_syslog/helpers/ctl_setup.sh 'ingestor_syslog'
 
+# reconstitute certs based on ttar file
+mkdir -p ${JOB_DIR}/config/ssl
+ttar < ${JOB_DIR}/config/kafka_tls.ttar
+index=0
 
-if [ -f /var/vcap/jobs/ingestor_syslog/config/kafka_tls.crt ] ; then
-  /var/vcap/packages/java8/bin/keytool -import -trustcacerts -alias root -file /var/vcap/jobs/ingestor_syslog/config/kafka_tls.crt -keystore /var/vcap/jobs/ingestor_syslog/config/kafka.jks -storepass logstashkafka -noprompt 
-fi
+for cert in ${JOB_DIR}/config/ssl/*; do
+  /var/vcap/packages/java8/bin/keytool -import -trustcacerts -alias root$((index++)) -file $cert -keystore /var/vcap/jobs/ingestor_syslog/config/kafka.jks -storepass logstashkafka -noprompt
+done
 
 export LANG=en_US.UTF-8
 # 1 logstash worker / CPU core
