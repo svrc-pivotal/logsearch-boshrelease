@@ -1,0 +1,13 @@
+<% if_p("logstash_ingestor.kafka_tls.ssl_cert") do | ssl | 
+  if !ssl.is_a?(Array)
+    ssl = [ssl]
+  end
+  kafka_tmp_file = 'kafkacert.pem'
+  ssl.each_with_index do | cert, i |
+%>
+========================== 0600 /var/vcap/jobs/ingestor_syslog/config/ssl/cert-<%= i %>.pem
+<%= cert %>
+<%
+  end
+end
+%>
