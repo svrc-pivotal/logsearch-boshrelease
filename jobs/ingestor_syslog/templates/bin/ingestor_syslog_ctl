@@ -11,9 +11,11 @@ mkdir -p ${JOB_DIR}/config/ssl
 ttar < ${JOB_DIR}/config/kafka_tls.ttar
 index=0
 
-for cert in ${JOB_DIR}/config/ssl/*; do
-  /var/vcap/packages/java8/bin/keytool -import -trustcacerts -alias root$((index++)) -file $cert -keystore /var/vcap/jobs/ingestor_syslog/config/kafka.jks -storepass logstashkafka -noprompt
-done
+if [! -f /var/vcap/jobs/ingestor_syslog/config/kafka.jks ]; then
+  for cert in ${JOB_DIR}/config/ssl/*; do
+    /var/vcap/packages/java8/bin/keytool -import -trustcacerts -alias root$((index++)) -file $cert -keystore /var/vcap/jobs/ingestor_syslog/config/kafka.jks -storepass logstashkafka -noprompt
+  done
+fi
 
 export LANG=en_US.UTF-8
 # 1 logstash worker / CPU core
