@@ -12,7 +12,7 @@ ttar < ${JOB_DIR}/config/kafka_tls.ttar
 index=0
 
 rm -f /var/vcap/jobs/ingestor_syslog/config/kafka.jks
-for cert in ${JOB_DIR}/config/ssl/*; do
+for cert in ${JOB_DIR}/config/ssl/*.pem; do
   /var/vcap/packages/java8/bin/keytool -import -trustcacerts -alias root$((index++)) -file $cert -keystore /var/vcap/jobs/ingestor_syslog/config/kafka.jks -storepass logstashkafka -noprompt
 done
 
