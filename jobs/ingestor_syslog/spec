@@ -66,6 +66,7 @@ properties:
     description: Syslog-TLS SSL key (file contents, not a path) - required if logstash_ingestor.syslog_tls.port set
   logstash_ingestor.kafka_tls.ssl_cert:
     description: Kafka TLS CA certificate (file contents, not a path) - required if using a kafka TLS output
+
   logstash_ingestor.relp.port:
     description: Port to listen for RELP messages
     default: 2514
